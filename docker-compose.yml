@@ -1,0 +1,21 @@
+version: "3"
+services:
+  firstjobapp:
+    image: firstjobapp
+    ports:
+      - "8080:8080"
+    networks:
+      - firstjobapp-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8
+    networks:
+      - firstjobapp-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb
+
+networks:
+  employee-mysql:
